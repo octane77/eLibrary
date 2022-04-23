@@ -2,7 +2,7 @@
 My implementation of an eLibrary Restful API using the Java programming language, Springboot backend framework and MongoDB as the database.  
 
 **Project Overview:**
-The purpose of this software development project is to create a public RESTful API for eLibraries to build upon in order to promote ease of access to education.
+The purpose of this software development project is to create a public RESTful API for eLibraries to build upon in order to promote ease of access to educational materials.
 
 The core deliverable features of this API is to allow users search for available books and retrieve book details.
 Details provided by the API include the book's title, subtitle, description, author, ISBN, number of pages, publication year, publisher, image URL, and download URL.
