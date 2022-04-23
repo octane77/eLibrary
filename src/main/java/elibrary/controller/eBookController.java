@@ -1,13 +1,13 @@
-package controller;
+package elibrary.controller;
 
-import dtos.requests.StoreEbookRequest;
-import dtos.responses.ApiResponse;
+import elibrary.dtos.eBook.requests.StoreEbookRequest;
+import elibrary.dtos.eBook.responses.ApiResponse;
+import elibrary.repository.EbookRepository;
+import elibrary.services.eBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import repository.EbookRepository;
-import services.eBookService;
 
 @RestController
 @RequestMapping("/elibrary")
@@ -28,4 +28,17 @@ public class eBookController {
             return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.FOUND);
         }
     }
+
+//    @PostMapping ("/registeruser")
+//    public ResponseEntity<?> registeruser(@RequestBody )
+
+    @GetMapping("/findByAuthor/{keyword}")
+    public ResponseEntity<?> findEbookByAuthor(@PathVariable String keyword) {
+        try {
+            return new ResponseEntity<>(elibrary.findEbookByAuthor(keyword), HttpStatus.OK);
+        } catch (Exception ex) {
+            return new ResponseEntity<>(new ApiResponse(false, ex.getMessage()), HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

@@ -1,4 +1,4 @@
-package dtos.requests;
+package elibrary.dtos.eBook.requests;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package dtos.responses;
+package elibrary.dtos.eBook.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
