@@ -1,4 +1,4 @@
-package elibrary.services;
+package elibrary.services.Ebook;
 
 import elibrary.dtos.eBook.requests.FindEbookByTitleRequest;
 import elibrary.dtos.eBook.requests.StoreEbookRequest;

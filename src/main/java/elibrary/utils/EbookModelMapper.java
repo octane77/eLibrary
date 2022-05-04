@@ -18,15 +18,11 @@ public class EbookModelMapper {
         return ebook;
     }
 
-
     public static StoreEbookResponse map(Ebook ebook) {
         StoreEbookResponse response = new StoreEbookResponse();
         response.setDetails(ebook.getTitle() + " by " + ebook.getAuthor());
         response.setMessage(ebook.getTitle() + " by " + ebook.getAuthor() + " has been successfully added to the library");
         return response;
     }
-
-
-
 
 }

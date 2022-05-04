@@ -1,5 +1,6 @@
 package elibrary.dtos.User.requests;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.ToString;
@@ -10,7 +11,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @NonNull
-@ToString
+@Builder
 public class RegisterUserRequestDto {
     @Id
     private Long id;
