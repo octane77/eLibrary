@@ -34,13 +34,8 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public DeleteUserResponseDto deleteUser(DeleteUserRequestDto deleteUserRequest) {
-        Optional<User> optionalUser = userRepository.findUserByEmail(deleteUserRequest.getEmail());
-        if (optionalUser.isEmpty()) {
-            throw new UserNotFoundException("This User Doesn't Exist");
-        }
-
-        optionalUser = userRepository.findUserByUsername(deleteUserRequest.getUsername());
+    public DeleteUserResponseDto deleteUser(String email) {
+        Optional<User> optionalUser = userRepository.findUserByEmail(email);
         if (optionalUser.isEmpty()) {
             throw new UserNotFoundException("This User Doesn't Exist");
         }
@@ -53,13 +48,33 @@ public class UserServiceImplementation implements UserService {
         return response;
     }
 
+//    @Override
+//    public DeleteUserResponseDto deleteUser(DeleteUserRequestDto deleteUserRequest) {
+//
+//
+////        optionalUser = userRepository.findUserByUsername(deleteUserRequest.getUsername());
+////        if (optionalUser.isEmpty()) {
+////            throw new UserNotFoundException("This User Doesn't Exist");
+////        }
+//
+//
+//    }
+
     @Override
-    public UpdateUserResponseDto updateUser(UpdateUserRequestDto updateUserRequest) {
-        Optional<User> optionalUser = userRepository.findUserByEmail(updateUserRequest.getEmail());
+    public UpdateUserResponseDto updateUser(UpdateUserRequestDto updateUserRequest, String email) {
+        Optional<User> optionalUser = userRepository.findUserByEmail(email);
         if (optionalUser.isEmpty()) {
             throw new UserNotFoundException("This User Doesn't Exist");
         }
-        User user = UserModelMapper.updateUserMap(updateUserRequest);
+        User user = optionalUser.get();
+        if (!(updateUserRequest.getEmail() == null || updateUserRequest.getEmail().trim().equals(""))) {
+            user.setEmail(updateUserRequest.getEmail());
+        }
+        if (!(updateUserRequest.getPassword() == null || updateUserRequest.getPassword().trim().equals(""))) {
+            user.setPassword(updateUserRequest.getPassword());
+        }
+
+//        User user = UserModelMapper.updateUserMap(updateUserRequest);
         User updatedUser = userRepository.save(user);
         return UserModelMapper.updateUserMap(updatedUser);
     }

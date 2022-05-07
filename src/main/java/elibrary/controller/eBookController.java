@@ -2,6 +2,9 @@ package elibrary.controller;
 
 import elibrary.dtos.eBook.requests.StoreEbookRequest;
 import elibrary.dtos.eBook.responses.ApiResponse;
+import elibrary.exceptions.Ebook.AuthorNotFoundException;
+import elibrary.exceptions.Ebook.BookNotFoundException;
+import elibrary.exceptions.Ebook.ElibraryException;
 import elibrary.repository.EbookRepository;
 import elibrary.services.Ebook.eBookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +27,25 @@ public class eBookController {
     public ResponseEntity<?> saveEbook(@RequestBody StoreEbookRequest request) {
         try {
             return new ResponseEntity<>(elibrary.storeEbook(request), HttpStatus.CREATED);
-        } catch (RuntimeException e) {
-            return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.FOUND);
+        } catch (ElibraryException exception) {
+            return new ResponseEntity<>(new ApiResponse(false, exception.getMessage()), HttpStatus.FOUND);
         }
     }
 
-    @GetMapping("/findByAuthor/{keyword}")
-    public ResponseEntity<?> findEbookByAuthor(@PathVariable String keyword) {
+    @GetMapping("/findByAuthor/{author}")
+    public ResponseEntity<?> findEbookByAuthor(@PathVariable String author) {
         try {
-            return new ResponseEntity<>(elibrary.findEbookByAuthor(keyword), HttpStatus.OK);
-        } catch (Exception ex) {
-            return new ResponseEntity<>(new ApiResponse(false, ex.getMessage()), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(elibrary.findEbookByAuthor(author), HttpStatus.OK);
+        } catch (AuthorNotFoundException exception) {
+            return new ResponseEntity<>(new ApiResponse(false, exception.getMessage()), HttpStatus.NOT_FOUND);
         }
     }
-
+    @GetMapping("/findByTitle/{title}")
+    public ResponseEntity<?> findEbookByTitle(@PathVariable String title) {
+        try {
+            return new ResponseEntity<>(elibrary.findEbookByTitle(title), HttpStatus.OK);
+        } catch (BookNotFoundException exception) {
+            return new ResponseEntity<>(new ApiResponse(false, exception.getMessage()), HttpStatus.NOT_FOUND);
+        }
+    }
 }

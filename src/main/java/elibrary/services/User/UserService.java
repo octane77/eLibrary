@@ -11,6 +11,6 @@ import elibrary.dtos.User.responses.UpdateUserResponseDto;
 public interface UserService {
 
     RegisterUserResponseDto registerUser(RegisterUserRequestDto registerUserRequest);
-    DeleteUserResponseDto deleteUser(DeleteUserRequestDto deleteUserRequest);
-    UpdateUserResponseDto updateUser(UpdateUserRequestDto updateUserRequest);
+    DeleteUserResponseDto deleteUser(String email);
+    UpdateUserResponseDto updateUser(UpdateUserRequestDto updateUserRequest, String email);
 }

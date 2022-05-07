@@ -4,12 +4,15 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 @Data
-@Builder
 public class UpdateUserRequestDto {
-    private String id;
+    @Size(max = 20)
+    private String username;
     @Email
+    @Size(max = 50)
     private String email;
+    @Size(max = 120)
     private String password;
 }

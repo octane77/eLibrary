@@ -1,20 +1,13 @@
 package elibrary.dtos.User.requests;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
 @Data
-@NonNull
-@Builder
 public class RegisterUserRequestDto {
-    @Id
-    private Long id;
     @Size(max = 20)
     private String username;
     @Email

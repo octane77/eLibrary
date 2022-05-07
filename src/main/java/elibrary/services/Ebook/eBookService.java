@@ -1,6 +1,5 @@
 package elibrary.services.Ebook;
 
-import elibrary.dtos.eBook.requests.FindEbookByTitleRequest;
 import elibrary.dtos.eBook.requests.StoreEbookRequest;
 import elibrary.dtos.eBook.responses.FindEbookByAuthorResponse;
 import elibrary.dtos.eBook.responses.FindEbookByTitleResponse;
@@ -12,7 +11,7 @@ import java.util.List;
 public interface eBookService {
     EbookRepository getRepository();
     StoreEbookResponse storeEbook(StoreEbookRequest request);
-    FindEbookByTitleResponse findEbookByTitle(FindEbookByTitleRequest request);
+    List<FindEbookByTitleResponse> findEbookByTitle(String title);
     List<FindEbookByAuthorResponse> findEbookByAuthor(String author);
 
 

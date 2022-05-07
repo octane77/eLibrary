@@ -36,7 +36,7 @@ public class UserModelMapper {
         if (isUpdated) {
             return user;
         }
-        return user;
+        return null;
     }
 
     public static UpdateUserResponseDto updateUserMap(User user){
