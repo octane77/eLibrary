@@ -74,7 +74,7 @@ public class UserController {
     }
 
     @PatchMapping("update/{email}")
-    public ResponseEntity<?> updateUserAccount(@RequestBody UpdateUserRequestDto updateUserRequestDto, @PathVariable String email){
+    public ResponseEntity<?> updateUserAccount(@RequestBody UpdateUserRequestDto updateUserRequestDto, @PathVariable("email") String email){
         try {
             userServiceImplementation.updateUser(updateUserRequestDto, email);
             return new ResponseEntity<>(new APIResponse("User Details Updated Successfully", true), HttpStatus.ACCEPTED);

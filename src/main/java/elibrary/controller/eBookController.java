@@ -18,10 +18,10 @@ public class eBookController {
     @Autowired
     private eBookService elibrary;
 
-    @GetMapping("/library")
-    public EbookRepository getRepository() {
-        return elibrary.getRepository();
-    }
+//    @GetMapping("/library")
+//    public EbookRepository getRepository() {
+//        return elibrary.getRepository();
+//    }
 
     @PostMapping("/saveEbook")
     public ResponseEntity<?> saveEbook(@RequestBody StoreEbookRequest request) {

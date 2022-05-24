@@ -9,7 +9,7 @@ import elibrary.repository.EbookRepository;
 import java.util.List;
 
 public interface eBookService {
-    EbookRepository getRepository();
+    List<EbookRepository> getRepository();
     StoreEbookResponse storeEbook(StoreEbookRequest request);
     List<FindEbookByTitleResponse> findEbookByTitle(String title);
     List<FindEbookByAuthorResponse> findEbookByAuthor(String author);

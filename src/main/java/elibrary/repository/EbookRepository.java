@@ -10,7 +10,7 @@ public interface EbookRepository extends MongoRepository<Ebook, String> {
 
     List<Ebook> findEbookByAuthor(String author);
 
-    Ebook findEbookByNumberOfPages(String numberOfPages);
+    Ebook findEbookByNumberOfPages(int numberOfPages);
 
     Ebook findEbookByGenre(String Genre);
 

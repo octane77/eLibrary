@@ -47,8 +47,8 @@ public class eBookServiceImplementation implements eBookService {
     }
 
     @Override
-    public EbookRepository getRepository() {
-        return library;
+    public List<EbookRepository> getRepository() {
+        return null;
     }
 
 
