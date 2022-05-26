@@ -6,20 +6,14 @@ import lombok.Data;
 @Data
 public class FindEbookByAuthorResponse {
     private String author;
-    private String publisher;
-    private String ISBN;
     private String title;
-    private int numberOfPages;
     private String description;
     private String genre;
 
-    public FindEbookByAuthorResponse(Ebook ebook){
-         author = ebook.getAuthor();
-         publisher = ebook.getPublisher();
-         ISBN = ebook.getISBN();
-         title = ebook.getTitle();
-         numberOfPages = ebook.getNumberOfPages();
-         description = ebook.getDescription();
-         genre = ebook.getGenre();
+    public FindEbookByAuthorResponse(Ebook ebook) {
+        author = ebook.getAuthor();
+        title = ebook.getTitle();
+        description = ebook.getDescription();
+        genre = ebook.getGenre();
     }
 }
