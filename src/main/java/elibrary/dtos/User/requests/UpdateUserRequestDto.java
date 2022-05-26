@@ -8,8 +8,6 @@ import javax.validation.constraints.Size;
 
 @Data
 public class UpdateUserRequestDto {
-    @Size(max = 20)
-    private String username;
     @Email
     @Size(max = 50)
     private String email;
